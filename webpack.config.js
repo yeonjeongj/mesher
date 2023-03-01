@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const prod = process.env.REACT_APP_MODE === 'production';
+const prod = process.env.NODE_ENV === 'production';
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -31,6 +31,10 @@ module.exports = {
           },
         ],
         exclude: /node_modules/,
+      },
+      {
+        test: /(\.css$)/,
+        loaders: ['style-loader', 'css-loader'],
       },
     ],
   },
